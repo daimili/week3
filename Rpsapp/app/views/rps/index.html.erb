@@ -1,0 +1,49 @@
+<h1>Rock, Paper, Scissors</h1>
+
+
+
+<% if @if_pa == 0%>
+<h2>Let's Play! Choose One:</h2>
+<%= link_to image_tag( 'rock.png', :height => '320', :width => '320'), :controller => "rps", :action => "index", :choose => "rock" %>
+<%= link_to image_tag( 'scissors.png', :height => '320', :width => '320'), :controller => "rps", :action => "index", :choose => "scissors" %>
+<%= link_to image_tag( 'paper.png', :height => '320', :width => '320'), :controller => "rps", :action => "index", :choose => "paper" %>
+<% elsif @if_pa == 1%>
+  <p><%= link_to "Back to main page", main_url %></p>
+  <% if @status == 0%>
+    <h2>Tie</h2>
+    <% if params[:choose] == 'rock'%>
+      <%= image_tag( 'rock.png', :height => '320', :width => '320') %>
+      <%= image_tag( 'rock.png', :height => '320', :width => '320') %>
+    <% elsif params[:choose] == 'paper'%>
+      <%= image_tag( 'paper.png', :height => '320', :width => '320') %>
+      <%= image_tag( 'paper.png', :height => '320', :width => '320') %>
+    <% elsif params[:choose] == 'scissors'%>
+      <%= image_tag( 'scissors.png', :height => '320', :width => '320') %>
+      <%= image_tag( 'scissors.png', :height => '320', :width => '320') %>
+    <% end %>
+  <% elsif @status == 1%>
+    <h2>You win</h2>
+    <% if params[:choose] == 'rock'%>
+      <%= image_tag( 'rock.png', :height => '320', :width => '320') %>
+      <%= image_tag( 'scissors.png', :height => '320', :width => '320') %>
+    <% elsif params[:choose] == 'paper'%>
+      <%= image_tag( 'paper.png', :height => '320', :width => '320') %>
+      <%= image_tag( 'rock.png', :height => '320', :width => '320') %>
+    <% elsif params[:choose] == 'scissors'%>
+      <%= image_tag( 'scissors.png', :height => '320', :width => '320') %>
+      <%= image_tag( 'paper.png', :height => '320', :width => '320') %>
+    <% end %>
+  <% elsif @status == -1%>
+    <h2>I win</h2>
+    <% if params[:choose] == 'rock'%>
+      <%= image_tag( 'rock.png', :height => '320', :width => '320') %>
+      <%= image_tag( 'paper.png', :height => '320', :width => '320') %>
+    <% elsif params[:choose] == 'paper'%>
+      <%= image_tag( 'paper.png', :height => '320', :width => '320') %>
+      <%= image_tag( 'scissors.png', :height => '320', :width => '320') %>
+    <% elsif params[:choose] == 'scissors'%>
+      <%= image_tag( 'scissors.png', :height => '320', :width => '320') %>
+      <%= image_tag( 'rock.png', :height => '320', :width => '320') %>
+    <% end %>
+  <% end %>
+<% end %>

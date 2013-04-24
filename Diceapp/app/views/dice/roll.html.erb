@@ -1,0 +1,48 @@
+<h1>Dice Game</h1>
+
+<% if $flag == 0 %>
+  <p><%=@numa%> | <%=@numb%> </p>
+  <% $flag = 1 %>
+  <% if @sum == 7 || @sum == 11 %>
+    <p>You win</p>
+    <%= form_tag(main_url) do %>
+    <p><%= submit_tag :"Play again" %></p>
+    <% $flag = 0 %>
+    <% end %>
+  <% elsif @sum == 2 || @sum == 3 || @sum == 12%>
+    <p>You lose</p>
+    <%= form_tag(main_url) do %>
+    <p><%= submit_tag :"Play again" %></p>
+    <% $flag = 0 %>
+    <% end %>
+  <% else%>
+    <p><%=$num%> becomes your point. Roll <%=$num%> again before a 7 and you win.</p>
+    <%= form_tag(roll_url) do %>
+    <p><%= submit_tag :"Roll the dice" %></p>
+    <% end %>
+  <% end %>
+<% else %>
+  <p><%=@numa%> | <%=@numb%> </p>
+  <% if @sum == $num %>
+    <p>You win</p>
+    <%= form_tag(main_url) do %>
+    <p><%= submit_tag :"Play again" %></p>
+    <% $flag = 0 %>
+    <% end %>
+  <% elsif @sum == 7%>
+    <p>You lose</p>
+    <%= form_tag(main_url) do %>
+    <p><%= submit_tag :"Play again" %></p>
+    <% $flag = 0 %>
+    <% end %>
+  <% else %>
+    <p><%=$num%> becomes your point. Roll <%=$num%> again before a 7 and you win.</p>
+    <%= form_tag(roll_url) do %>
+    <p><%= submit_tag :"Roll the dice" %></p>
+    <% end %>
+  <% end %>
+
+
+<% end %>
+
+
